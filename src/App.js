@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
+import { useState } from "react";
 
 function App() {
+  const country = "Philippines";
+
+  const [greeting, setGreeting] = useState("Good morning");
+
+  setTimeout(() => {
+    setGreeting("Good Afternoon");
+  }, 3000);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header greeting={greeting} age="20" />
+      <Body country={country} />
+      <Footer country={country} />
     </div>
   );
 }

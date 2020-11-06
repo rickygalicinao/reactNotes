@@ -6,16 +6,10 @@ import { useState } from "react";
 function App() {
   const country = "Philippines";
 
-  const [greeting, setGreeting] = useState("Good morning");
-
-  setTimeout(() => {
-    setGreeting("Good Afternoon");
-  }, 3000);
-
   return (
     <div>
-      <Header greeting={greeting} age="20" />
-      <Body country={country} />
+      <Header />
+      <Body />
       <Footer country={country} />
     </div>
   );

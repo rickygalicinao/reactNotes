@@ -1,11 +1,7 @@
 import React from "react";
 
-const Header = (props) => {
-  return (
-    <h1>
-      Header {props.greeting} {props.age}
-    </h1>
-  );
+const Header = () => {
+  return <h1>Welcome to Pokemon</h1>;
 };
 
 export default Header;

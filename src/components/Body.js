@@ -1,34 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Body = (props) => {
-  const [count, setCount] = useState(1);
+const Body = () => {
+  const [abilities, setAbility] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    setCount(count + 1);
-  };
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        const res = await axios.get("https://pokeapi.co/api/v2/pokemon/ditto");
+        setAbility(res.data.abilities);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  const [users, setUsers] = useState([
-    { name: "Ricky", age: 22 },
-    { name: "Ricky2", age: 23 },
-    { name: "Ricky3", age: 24 },
-  ]);
+    fetchPokemon();
+  }, []);
 
-  const data = users.map((user) => {
-    return (
-      <div>
-        <p>{user.name} </p>
-        <p>{user.age} </p>
-      </div>
-    );
+  const abilitiesData = abilities.map((abi, index) => {
+    return <p key={index}> {abi.ability.name} </p>;
   });
   return (
     <div>
-      <h1>Body {props.country} </h1>
-      <p>Count is {count}</p>
-      <button onClick={handleClick}>+</button>
-      {data}
+      <h1>Body </h1>
+      {loading ? <p>Loading...</p> : abilitiesData}
     </div>
   );
 };
 
 export default Body;
+
+//
